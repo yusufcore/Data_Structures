@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node* next;
+}*first=NULL;   // first is a pointer for implementing linkedlist.
+
+void create(int A[], int n){
+    int i;
+    struct Node *t, *last;
+    first=(struct Node*)malloc(sizeof(struct Node));
+    first->data=A[0];
+    first->next=NULL;
+    last=first;
+
+    for(i=1; i<n; i++){
+        t=(struct Node*)malloc(sizeof(struct Node));
+        t->data=A[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+
+void display(struct Node *p){
+    while(p!=NULL){
+        printf("%d ", p->data);
+        p=p->next;
+    }
+    printf("\n");
+}
+
+// int length(){  // function to print the number of nodes in a linkedlist.
+//     int count = 0;
+//     struct Node* l;  
+//     l=first;
+//     while(l!=NULL){
+//         count++;
+//         l=l->next;
+//     }
+//     return count;
+// }
+int count(struct Node* p){
+    int count = 0;
+    while(p!=NULL){
+        count++;
+        p=p->next;
+    }
+    return count;
+}
+
+int main(){
+    int A[] ={3,5,7,10,15};
+    create(A,5);
+    // display(first);
+    // int len = length();
+    // printf("Number of Nodes in the Linkedlist are: %d\n", len);
+    int len = count(first);
+    printf("Number of Nodes in the Linkedlist are: %d\n", len);
+    return 0;
+}
