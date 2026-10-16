@@ -73,6 +73,29 @@ void insert(int data, int pos){
         }
     }
 
+void delete(int pos){
+    struct Node* p = head;
+    int i = 1;
+    if(head==NULL){
+        printf("Operation cannot be performed!\n");
+        return;
+    }else if(pos==1){
+        head = p->next;
+        p->next=NULL;
+        free(p);
+    }else{
+        while((p->next!=NULL)&&(i<pos-1)){
+            p=p->next;
+            i++;
+        }
+        struct Node* q = p;
+        q = p->next;
+        p->next=q->next;
+        q->next=NULL;
+        free(q);
+    }
+}
+
 int main(int argc, char **argv)
 {
     int data, pos;
@@ -102,6 +125,11 @@ int main(int argc, char **argv)
             printf("Enter the position at which the node is to be inserted: ");
             scanf("%d", &pos);
             insert(data,pos);
+            break;
+        case 4:
+            printf("Enter the position of node to be deleted: ");
+            scanf("%d", &pos);
+            delete(pos);
             break;
         case 10: 
             exit(0);
