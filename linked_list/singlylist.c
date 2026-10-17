@@ -110,24 +110,6 @@ void delete(int pos)   // to delete a node from any position in the list.
     }
 }
 
-int search(int data)  // to search an element in the current list and return 1 if found.
-{
-    struct Node *p = head;
-    while (p->next != NULL)
-    {
-        if (p->data = data)
-        {
-            return 1;   // returns 1 if element is found.
-        }
-        else
-        {
-            p = p->next;
-        }
-    }
-    printf("Element does not exist!\n");
-    return 0;
-}
-
 int main(int argc, char **argv)
 {
     int data, pos;
@@ -139,7 +121,7 @@ int main(int argc, char **argv)
         printf("2) Traversing the whole list\n");
         printf("3) Insert a new node anywhere in the list\n");
         printf("4) To delete any node in the list\n");
-        printf("5) To seacrh an element\n");
+        // printf("5) To seacrh an element\n");
         printf("10) Exit the program\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -165,12 +147,12 @@ int main(int argc, char **argv)
             scanf("%d", &pos);
             delete(pos);
             break;
-        case 5: 
-            printf("Enter the element to be searched: ");
-            scanf("%d", &data);
-            int found = search(data);
-            printf("Element was found successfully: %d\n", found);
-            break;
+        // case 5: 
+        //     printf("Enter the element to be searched: ");
+        //     scanf("%d", &data);
+        //     int found = search(data);
+        //     printf("Element was found successfully: %d\n", found);
+        //     break;
         case 10:
             exit(0);
             break;
